@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+:root {
+    --btn-color: rgb(98, 98, 253);
+    --body-color: #e9ecef;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --gray-color: #6c757d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", sans-serif;
+}
+
+body {
+    background: var(--body-color);
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+
+.student-box {
+    background-color: var(--gray-color);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.student-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.student-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.input-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: var(--btn-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+    border: 2px solid var(--btn-color);
+}
+
+.message {
+    display: none;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.message.success {
+    display: block;
+    background-color: var(--success-color);
+    color: white;
+}
+
+.message.error {
+    display: block;
+    background-color: var(--error-color);
+    color: white;
+}
+
+.message.error::before {
+    content: "!";
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+/* متجاوب */
+@media (max-width: 576px) {
+    .student-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

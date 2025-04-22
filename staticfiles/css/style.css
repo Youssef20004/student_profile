@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+:root{
+    --btn-color: rgb(98, 98, 253);
+    --input-color: rgb(201, 199, 199);
+    --body-color: #e9ecef;
+    --error-color: #dc3545;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", sans-serif;
+}
+body {
+    background: var(--body-color);
+}
+.img img{
+    width: calc(100%);
+}
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+.login-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 140px;
+}
+.login-form input {
+    background: var(--input-color);
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 200px;
+    padding-inline: 20px;
+    font-size: 14px;
+}
+.login-form button {
+    background: var(--btn-color);
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.login-form button i {
+    color: var(--body-color);
+    font-size: 1.5rem;
+}
+.error-message {
+    display: none;
+    font-size: 14px;
+    color: white;
+    background: var(--error-color);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+.error-message.show {
+    display: block;
+}
+.error-message::before {
+    content: "!";
+    margin-left: 8px;
+    font-weight: bold;
+}

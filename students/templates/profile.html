@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بروفايل الطالب</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+</head>
+<body>
+    <div class="profile-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="student-box">
+            <h2>بيانات الطالب</h2>
+            <div class="student-info">
+                <p><strong>الاسم بالعربي:</strong> <span id="arabic-name">{{ student.arabic_name }}</span></p>
+                <p><strong>رقم الجلوس:</strong> <span id="seat-number">{{ student.seat_number }}</span></p>
+            </div>
+            {% if student.english_name %}
+                <div id="english-name-section">
+                    <p><strong>الاسم بالإنجليزي:</strong> <span id="english-name">{{ student.english_name }}</span></p>
+                </div>
+            {% else %}
+                <div id="english-name-section" style="display: none;">
+                    <p><strong>الاسم بالإنجليزي:</strong> <span id="english-name"></span></p>
+                </div>
+            {% endif %}
+            {% if student.photo %}
+                <div id="photo-section">
+                    <img id="profile-photo" src="{{ student.photo.url }}" alt="الصورة الشخصية" class="avatar">
+                </div>
+            {% else %}
+                <div id="photo-section" style="display: none;">
+                    <img id="profile-photo" alt="الصورة الشخصية" class="avatar">
+                </div>
+            {% endif %}
+        </div>
+        <div class="input-section">
+            <p>الرجاء إدخال اسمك بالإنجليزي وصورة شخصية لك</p>
+            <button type="button" class="btn-custom" data-bs-toggle="modal" data-bs-target="#profileModal">
+                اضغط هنا
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">تحديث البروفايل</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="profile-form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="english_name" class="form-label">الاسم بالإنجليزي</label>
+                            {{ form.english_name }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="photo" class="form-label">الصورة الشخصية</label>
+                            {{ form.photo }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">حفظ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'profile.js' %}"></script>
+</body>
+</html>
