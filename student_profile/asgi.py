@@ -11,6 +11,7 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'student_profile.settings')
+settings_module = 'student_profile.deployment_settings' if 'RENDER_EXTERNAL_HOSTNAME' in os.environ else 'student_profile.settings'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_asgi_application()

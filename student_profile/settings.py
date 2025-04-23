@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+from import_export.formats.base_formats import XLSX
+
+IMPORT_EXPORT_FORMATS = [XLSX]
+IMPORT_EXPORT_FORMATS_PERMISSION_CODE = 'is_superuser'
+
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 200000
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',  # للسماح بالتواصل مع react
     'students',
     'rest_framework',
+    'import_export',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

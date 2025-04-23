@@ -23,8 +23,8 @@ class Student(models.Model):
             models.Index(fields=['seat_number', 'national_id']),
         ]
         ordering = ['-created']
-        verbose_name = "طالب"
-        verbose_name_plural = "الطلاب"
+        # verbose_name = "طالب"
+        # verbose_name_plural = "الطلاب"
 
     def __str__(self):
         return self.arabic_name
